@@ -1,99 +1,100 @@
+import axios from "axios";
+import {options} from "../data/RequestOptions.jsx";
+import {useEffect, useState} from "react";
+
 const HomeTvShows = () => {
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => {
+    setIsLoading(true);
+    axios
+      .get(`https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1`, options)
+      .then((response) => {
+        if (response.status === 200) {
+          setData(response.data.results)
+          setIsLoading(false)
+        }
+      })
+      .catch((error) => {
+        console.error(error)
+        setIsLoading(false)
+      })
+  }, []);
+
   return (
     <>
       <div className="max-w-lg mx-auto text-center">
         <h2
-          className="text-3xl font-semibold text-gray-800 dark:text-gray-200 md:text-4xl xl:text-5xl leading-tight transition duration-500">TV Shows</h2>
+          className="text-3xl font-semibold text-gray-800 dark:text-gray-200 md:text-4xl xl:text-5xl leading-tight transition duration-500">TV
+          Shows</h2>
       </div>
-      <div className="max-w-[95rem] px-6 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-        <div className="grid lg:grid-cols-2 gap-6">
+      {isLoading ? (
+        <div className="max-w-[95rem] px-6 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+          <div className="grid lg:grid-cols-2 gap-6">
+            {Array.from({length: 4}).map((_, index) => (
+              <div key={index} className="group sm:flex rounded-xl" role="status">
+                <div
+                  className="flex items-center justify-center bg-gray-300 dark:bg-gray-700 flex-shrink-0 relative rounded-xl overflow-hidden w-[300px] h-[400px] animate-pulse">
+                  <svg className="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true"
+                       xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                    <path
+                      d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
+                  </svg>
+                </div>
+                <div className="grow">
+                  <div className="p-4 flex flex-col h-full sm:p-6 animate-pulse">
+                    <div className="h-4 bg-gray-200 rounded-full dark:bg-gray-700 mb-8"></div>
 
-            <div className="group sm:flex rounded-xl">
-              <div
-                className="flex-shrink-0 relative rounded-xl overflow-hidden w-full h-[200px] sm:w-[250px] sm:h-[350px]">
-                <img className="size-full absolute top-0 start-0 object-cover"
-                     src="https://m.media-amazon.com/images/M/MV5BNzI5MjUyYTEtMTljZC00NGI5LWFhNWYtYjY0ZTQ5YmEzMWRjXkEyXkFqcGdeQXVyMTY3MDE5MDY1._V1_SX300.jpg"
-                     alt="Image Description"/>
-              </div>
-              <div className="grow">
-                <div className="p-4 flex flex-col h-full sm:p-6">
-                  <h3
-                    className="text-lg sm:text-2xl font-semibold text-gray-800 group-hover:text-blue-600 dark:text-gray-500 transition-colors duration-500">
-                    The Walking Dead
-                  </h3>
-                  <p className="mt-2 text-gray-600 dark:text-gray-400 transition-colors duration-500">
-                    Sheriff Deputy Rick Grimes wakes up from a coma to learn the world is in ruins and must lead a group of survivors to stay alive.
-                  </p>
-
-                  <div className="mt-5 sm:mt-auto">
-                    <div>
-                      <p
-                        className="inline-flex items-center py-1.5 px-3 m-2 ml-0 lg:mr-2 lg:m-0 rounded-md text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200">
-                        IMDB: 8.1
-                      </p>
-                      <p
-                        className="inline-flex items-center py-1.5 px-3 m-2 ml-0 lg:mr-2 lg:m-0 rounded-md text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200">
-                        RT: N/A
-                      </p>
-                      <p
-                        className="inline-flex items-center py-1.5 px-3 ml-0 lg:mr-2 lg:m-0 rounded-md text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200">
-                        Metascore: N/A
-                      </p>
+                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5 lg:w-96"></div>
+                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                    <div className="mt-5 sm:mt-auto">
+                      <button
+                        className="w-full px-16 py-5 mt-6 tracking-wider uppercase transition-colors duration-500 transform bg-gray-200 dark:bg-gray-700 rounded-lg lg:w-auto">
+                      </button>
                     </div>
-
-                    <button
-                      className="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-500 transform bg-blue-600 rounded-lg lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">Read
-                      more
-                    </button>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div className="group sm:flex rounded-xl">
-              <div
-                className="flex-shrink-0 relative rounded-xl overflow-hidden w-full h-[200px] sm:w-[250px] sm:h-[350px]">
-                <img className="size-full absolute top-0 start-0 object-cover"
-                     src="https://m.media-amazon.com/images/M/MV5BNzI5MjUyYTEtMTljZC00NGI5LWFhNWYtYjY0ZTQ5YmEzMWRjXkEyXkFqcGdeQXVyMTY3MDE5MDY1._V1_SX300.jpg"
-                     alt="Image Description"/>
-              </div>
-              <div className="grow">
-                <div className="p-4 flex flex-col h-full sm:p-6">
-                  <h3
-                    className="text-lg sm:text-2xl font-semibold text-gray-800 group-hover:text-blue-600 dark:text-gray-500 transition-colors duration-500">
-                    The Walking Dead
-                  </h3>
-                  <p className="mt-2 text-gray-600 dark:text-gray-400 transition-colors duration-500">
-                    Sheriff Deputy Rick Grimes wakes up from a coma to learn the world is in ruins and must lead a group of survivors to stay alive.
-                  </p>
-
-                  <div className="mt-5 sm:mt-auto">
-                    <div>
-                      <p
-                        className="inline-flex items-center py-1.5 px-3 m-2 ml-0 lg:mr-2 lg:m-0 rounded-md text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200">
-                        IMDB: 8.1
-                      </p>
-                      <p
-                        className="inline-flex items-center py-1.5 px-3 m-2 ml-0 lg:mr-2 lg:m-0 rounded-md text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200">
-                        RT: N/A
-                      </p>
-                      <p
-                        className="inline-flex items-center py-1.5 px-3 ml-0 lg:mr-2 lg:m-0 rounded-md text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200">
-                        Metascore: N/A
-                      </p>
-                    </div>
-
-                    <button
-                      className="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-500 transform bg-blue-600 rounded-lg lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">Read
-                      more
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="max-w-[95rem] px-6 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+          <div className="grid lg:grid-cols-2 gap-6">
+            {data.slice(0, 4).map((movie, index) => (
+              <div key={index} className="group sm:flex rounded-xl">
+                <div
+                  className="flex-shrink-0 relative rounded-xl overflow-hidden w-full h-[200px] sm:w-[250px] sm:h-[350px]">
+                  <img className="size-full absolute top-0 start-0 object-cover"
+                       src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                       alt={movie.name}/>
+                </div>
+                <div className="grow">
+                  <div className="p-4 flex flex-col h-full sm:p-6">
+                    <h3
+                      className="text-lg sm:text-2xl font-semibold text-gray-800 group-hover:text-blue-600 dark:text-gray-500 transition-colors duration-500">
+                      {movie.name}
+                    </h3>
+                    <p className="mt-2 text-gray-600 dark:text-gray-400 transition-colors duration-500">
+                      {movie.overview}
+                    </p>
+                    <div className="mt-5 sm:mt-auto">
+                      <button
+                        className="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-500 transform bg-blue-600 rounded-lg lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                        Read more
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </>
   )
 }
