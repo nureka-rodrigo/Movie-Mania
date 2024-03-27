@@ -1,12 +1,16 @@
 import {useState} from 'react';
 import ThemeButton from './ThemeButton.jsx';
 import {NavItems} from '../data/NavItems.jsx';
+import {useLocation} from "react-router-dom";
 
 const Navbar = () => {
   const [openNavbar, setOpenNavbar] = useState(false);
   const toggleNavbar = () => {
     setOpenNavbar((openNavbar) => !openNavbar);
   };
+
+  let pathArray = useLocation().pathname.split("/");
+  let lastPart = pathArray[pathArray.length - 1];
 
   return (
     <>
@@ -31,7 +35,11 @@ const Navbar = () => {
               {NavItems.map((navItem) => (
                 <li key={navItem.id}>
                   <a href={navItem.link}
-                     className="relative py-2.5 duration-300 ease-linear hover:text-black dark:hover:text-white">
+                     className={`relative py-2.5 duration-300 ease-linear hover:text-blue-500 ${
+                       lastPart === navItem.link
+                         ? "rounded-none border-b-2 border-blue-600 text-blue-600"
+                         : ""
+                     }`}>
                     {navItem.text}
                   </a>
                 </li>

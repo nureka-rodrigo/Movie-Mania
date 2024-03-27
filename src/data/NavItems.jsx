@@ -6,11 +6,16 @@ export const NavItems = [
   },
   {
     id: 2,
-    text: '',
-    link: '#',
+    text: 'Movies',
+    link: 'movie',
   },
   {
     id: 3,
+    text: 'TV Shows',
+    link: 'tv-shows',
+  },
+  {
+    id: 4,
     text: 'Contact',
     link: 'contact',
   },
