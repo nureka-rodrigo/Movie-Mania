@@ -3,8 +3,9 @@ import Index from "./pages/Index.jsx";
 import {Route, Routes} from "react-router-dom";
 import Landing from "./components/Landing.jsx";
 import Error404 from "./pages/Error404.jsx";
-import Movies from "./pages/Movies.jsx";
-import TvShows from "./pages/TvShows.jsx";
+import MovieList from "./pages/MovieList.jsx";
+import TvShowList from "./pages/TvShowList.jsx";
+import Movie from "./pages/Movie.jsx";
 
 function App() {
 
@@ -14,8 +15,9 @@ function App() {
         <Routes>
           <Route path={"/"} element={<Landing/>}/>
           <Route path={"/home"} element={<Index/>}/>
-          <Route path={"/movies"} element={<Movies/>}/>
-          <Route path={"/tv-shows"} element={<TvShows/>}/>
+          <Route path={"/movies"} element={<MovieList/>}/>
+          <Route path={"/tv-shows"} element={<TvShowList/>}/>
+          <Route path={"/movie/:id"} element={<Movie/>}/>
           <Route path={"*"} element={<Error404/>}/>
         </Routes>
       </div>
