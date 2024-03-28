@@ -3,14 +3,14 @@ import {options} from "../data/RequestOptions.jsx";
 import {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 
-const MovieCards = ({ size, type, page }) => {
+const MovieCards = ({size, type, page}) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`https://api.themoviedb.org/3/movie/${type}?language=en-US&page=${page}`, options) // Use the page prop in the request
+      .get(`https://api.themoviedb.org/3/movie/${type}?language=en-US&page=${page}`, options)
       .then((response) => {
         if (response.status === 200) {
           setData(response.data.results)
@@ -62,7 +62,8 @@ const MovieCards = ({ size, type, page }) => {
         <div className="max-w-[95rem] px-6 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
           <div className="grid lg:grid-cols-2 gap-6">
             {data.slice(0, size).map((movie, index) => (
-              <div key={index} className="group sm:flex rounded-xl hover:bg-gray-100 dark:hover:bg-gray-950 transition duration-300">
+              <div key={index}
+                   className="group sm:flex rounded-xl hover:bg-gray-100 dark:hover:bg-gray-950 transition duration-300">
                 <div
                   className="flex-shrink-0 relative rounded-xl overflow-hidden w-full h-[200px] sm:w-[250px] sm:h-[350px]">
                   <img className="size-full absolute top-0 start-0 object-cover"
@@ -76,7 +77,7 @@ const MovieCards = ({ size, type, page }) => {
                       {movie.title}
                     </h3>
                     <p className="mt-2 text-gray-600 dark:text-gray-400 transition-colors duration-500">
-                      {movie.overview}
+                      {movie.overview !== "" ? (movie.overview.length > 250 ? movie.overview.substring(0, 250) + "..." : movie.overview) : "N/A"}
                     </p>
                     <div className="mt-5 sm:mt-auto">
                       <button

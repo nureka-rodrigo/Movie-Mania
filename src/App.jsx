@@ -4,6 +4,7 @@ import {Route, Routes} from "react-router-dom";
 import Landing from "./components/Landing.jsx";
 import Error404 from "./pages/Error404.jsx";
 import Movies from "./pages/Movies.jsx";
+import TvShows from "./pages/TvShows.jsx";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
           <Route path={"/"} element={<Landing/>}/>
           <Route path={"/home"} element={<Index/>}/>
           <Route path={"/movies"} element={<Movies/>}/>
+          <Route path={"/tv-shows"} element={<TvShows/>}/>
           <Route path={"*"} element={<Error404/>}/>
         </Routes>
       </div>

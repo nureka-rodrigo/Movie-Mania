@@ -1,15 +1,16 @@
 import axios from "axios";
 import {options} from "../data/RequestOptions.jsx";
 import {useEffect, useState} from "react";
+import PropTypes from "prop-types";
 
-const HomeTvShows = () => {
+const TvShowCards = ({size, type, page}) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1`, options)
+      .get(`https://api.themoviedb.org/3/tv/${type}?language=en-US&page=${page}`, options)
       .then((response) => {
         if (response.status === 200) {
           setData(response.data.results)
@@ -20,19 +21,14 @@ const HomeTvShows = () => {
         console.error(error)
         setIsLoading(false)
       })
-  }, []);
+  }, [type, page]);
 
   return (
     <>
-      <div className="max-w-lg mx-auto text-center">
-        <h2
-          className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-br from-blue-600 from-20% via-indigo-400 via-30% to-teal-600 md:text-4xl xl:text-5xl">TV
-          Shows</h2>
-      </div>
       {isLoading ? (
         <div className="max-w-[95rem] px-6 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
           <div className="grid lg:grid-cols-2 gap-6">
-            {Array.from({length: 4}).map((_, index) => (
+            {Array.from({length: size}).map((_, index) => (
               <div key={index} className="group sm:flex rounded-xl" role="status">
                 <div
                   className="flex items-center justify-center bg-gray-300 dark:bg-gray-700 flex-shrink-0 relative rounded-xl overflow-hidden w-[300px] h-[400px] animate-pulse">
@@ -65,23 +61,23 @@ const HomeTvShows = () => {
       ) : (
         <div className="max-w-[95rem] px-6 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
           <div className="grid lg:grid-cols-2 gap-6">
-            {data.slice(0, 4).map((movie, index) => (
+            {data.slice(0, size).map((tvShow, index) => (
               <div key={index}
                    className="group sm:flex rounded-xl hover:bg-gray-100 dark:hover:bg-gray-950 transition duration-300">
                 <div
                   className="flex-shrink-0 relative rounded-xl overflow-hidden w-full h-[200px] sm:w-[250px] sm:h-[350px]">
                   <img className="size-full absolute top-0 start-0 object-cover"
-                       src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                       alt={movie.name}/>
+                       src={`https://image.tmdb.org/t/p/w500${tvShow.poster_path}`}
+                       alt={tvShow.name}/>
                 </div>
                 <div className="grow">
                   <div className="p-4 flex flex-col h-full sm:p-6">
                     <h3
                       className="text-lg sm:text-2xl font-semibold text-gray-800 group-hover:text-blue-600 dark:text-gray-500 transition-colors duration-500">
-                      {movie.name}
+                      {tvShow.name}
                     </h3>
                     <p className="mt-2 text-gray-600 dark:text-gray-400 transition-colors duration-500">
-                      {movie.overview}
+                      {tvShow.overview !== "" ? (tvShow.overview.length > 250 ? tvShow.overview.substring(0, 250) + "..." : tvShow.overview) : "N/A"}
                     </p>
                     <div className="mt-5 sm:mt-auto">
                       <button
@@ -100,4 +96,10 @@ const HomeTvShows = () => {
   )
 }
 
-export default HomeTvShows;
+TvShowCards.propTypes = {
+  size: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
+  page: PropTypes.number.isRequired,
+};
+
+export default TvShowCards;

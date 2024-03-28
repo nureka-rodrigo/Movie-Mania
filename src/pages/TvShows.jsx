@@ -1,11 +1,11 @@
 import Navbar from "../components/NavBar.jsx";
 import Footer from "../components/Footer.jsx";
-import MovieCards from "../components/MovieCards.jsx";
+import TvShowCards from "../components/TvShowCards.jsx";
 import {useState} from "react";
 
-const Movies = () => {
+const TvShows = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [currentSelection, setCurrentSelection] = useState("now_playing");
+  const [currentSelection, setCurrentSelection] = useState("airing_today");
 
   const handleSelection = (e) => {
     setCurrentSelection(e.target.value);
@@ -45,13 +45,13 @@ const Movies = () => {
             </div>
             <div className="mx-auto text-center max-w-xl md:max-w-2xl relative space-y-8">
               <h1
-                className="text-3xl/tight sm:text-4xl/tight md:text-5xl/tight font-bold text-blue-950 dark:text-white transition duration-500">
-                Explore Exciting <span
-                className="text-transparent bg-clip-text bg-gradient-to-br from-blue-600 from-20% via-indigo-400 via-30% to-teal-600">Movies</span>
+                className="text-3xl/tight sm:text-4xl/tight md:text-5xl/tight font-bold text-blue-950 dark:text-white">
+                Discover Exciting <span
+                className="text-transparent bg-clip-text bg-gradient-to-br from-blue-600 from-20% via-indigo-400 via-30% to-teal-600">TV Shows</span>
               </h1>
-              <p className="text-gray-700 dark:text-gray-300 transition duration-500">
-                Discover a wide range of thrilling movies currently in theaters or available for streaming.
-                Whether you&apos;re into action, romance, or comedy, we&apos;ve got something for everyone!
+              <p className="text-gray-700 dark:text-gray-300">
+                Dive into an array of binge-worthy TV shows available for streaming. From gripping dramas to hilarious
+                comedies, you&apos;ll find your next favorite series here.
               </p>
             </div>
           </div>
@@ -63,16 +63,16 @@ const Movies = () => {
                 <select
                   onChange={(e) => handleSelection(e)}
                   className="lex items-center justify-center w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg md:w-auto focus:outline-none hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-800 transition duration-500">
-                  <option value="now_playing">Now Playing</option>
+                  <option value="airing_today">Airing Today</option>
+                  <option value="on_the_air">On The Air</option>
                   <option value="popular">Popular</option>
                   <option value="top_rated">Top Rated</option>
-                  <option value="upcoming">Upcoming</option>
                 </select>
               </nav>
             </div>
           </section>
 
-          <MovieCards size={10} type={currentSelection} page={currentPage}/>
+          <TvShowCards size={10} type={currentSelection} page={currentPage}/>
 
           <section className="flex items-center">
             <div className="w-full max-w-screen-7xl mx-auto">
@@ -120,4 +120,4 @@ const Movies = () => {
   )
 }
 
-export default Movies
+export default TvShows
