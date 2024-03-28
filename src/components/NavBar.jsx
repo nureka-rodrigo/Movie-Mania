@@ -15,8 +15,7 @@ const Navbar = () => {
     setOpenNavbar((openNavbar) => !openNavbar);
   };
 
-  let pathArray = useLocation().pathname.split("/");
-  let lastPart = pathArray[pathArray.length - 1];
+  let lastPart = useLocation().pathname;
 
   useEffect(() => {
     if (searchInput) {
