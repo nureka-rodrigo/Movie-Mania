@@ -1,7 +1,7 @@
 export const options = {
-  method: 'GET',
+  method: "GET",
   headers: {
-    accept: 'application/json',
-    Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`
-  }
+    accept: "application/json",
+    Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
+  },
 };

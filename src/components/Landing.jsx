@@ -2,25 +2,25 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            navigate("/home");
-        }, 3000);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate("/home");
+    }, 3000);
 
-        return () => clearTimeout(timer);
-    }, [navigate]);
+    return () => clearTimeout(timer);
+  }, [navigate]);
 
-    return (
-        <div className="flex justify-center items-center min-h-screen">
-            <img
-                className="h-16 w-auto dark:invert animate-pulse"
-                src="/logo.svg"
-                alt="Landing Logo"
-            />
-        </div>
-    );
+  return (
+    <div className="flex justify-center items-center min-h-screen">
+      <img
+        className="h-16 w-auto dark:invert animate-pulse"
+        src="/logo.svg"
+        alt="Landing Logo"
+      />
+    </div>
+  );
 };
 
 export default Landing;
