@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import ThemeButton from './ThemeButton.jsx';
 import {NavItems} from '../data/NavItems.jsx';
-import {useLocation} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 
 const Navbar = () => {
   const [openNavbar, setOpenNavbar] = useState(false);
@@ -34,14 +34,14 @@ const Navbar = () => {
               className="flex flex-col justify-center lg:flex-row gap-8 lg:items-center text-gray-700 dark:text-gray-300 lg:w-full lg:pl-36">
               {NavItems.map((navItem) => (
                 <li key={navItem.id}>
-                  <a href={navItem.link}
+                  <Link to={navItem.link}
                      className={`relative py-2.5 duration-300 ease-linear hover:text-blue-500 ${
                        lastPart === navItem.link
                          ? "rounded-none border-b-2 border-blue-600 text-blue-600"
                          : ""
                      }`}>
                     {navItem.text}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
