@@ -15,7 +15,9 @@ const Index = () => {
               <div className="lg:max-w-lg">
                 <h1
                   className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl pt-16 lg:pt-0 transition duration-500">Discover
-                  the <br/> latest <span className="text-blue-500">Blockbusters</span></h1>
+                  the <br/> latest <span
+                    className="text-transparent bg-clip-text bg-gradient-to-br from-blue-600 from-20% via-indigo-400 via-30% to-teal-600">Movies</span>
+                </h1>
 
                 <p className="mt-3 text-gray-600 dark:text-gray-400 transition duration-500">Explore a world of
                   entertainment with our curated collection of movies and TV shows. From action-packed thrillers to

@@ -26,7 +26,7 @@ const HomeMovies = () => {
     <>
       <div className="max-w-lg mx-auto text-center">
         <h2
-          className="text-3xl font-semibold text-gray-800 dark:text-gray-200 md:text-4xl xl:text-5xl leading-tight transition duration-500">Movies</h2>
+          className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-br from-blue-600 from-20% via-indigo-400 via-30% to-teal-600 md:text-4xl xl:text-5xl">Movies</h2>
       </div>
       {isLoading ? (
         <div className="max-w-[95rem] px-6 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
