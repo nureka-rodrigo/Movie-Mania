@@ -43,7 +43,7 @@ const Index = () => {
             className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-br from-blue-600 from-20% via-indigo-400 via-30% to-teal-600 md:text-4xl xl:text-5xl">TV
             Shows</h2>
         </div>
-        <TvShowCards size={4} type={"on_the_air"}/>
+        <TvShowCards size={4} type={"on_the_air"} page={1}/>
         <Footer className="mt-auto"/>
       </div>
     </>
