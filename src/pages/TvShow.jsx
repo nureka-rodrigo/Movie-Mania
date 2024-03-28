@@ -68,12 +68,12 @@ const TvShow = () => {
           <Navbar/>
           <section className="pt-32 pb-8 mx-auto">
             <div
-              className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-10 flex flex-col md:flex-row gap-16 py-10 rounded-2xl">
+              className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-10 flex flex-col md:flex-row gap-8 md:gap-16 py-10 rounded-2xl">
               <div className="flex md:flex-1">
                 <img src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} alt="working on housing" width={1300}
                      className="w-full md:h-full object-cover rounded-lg"/>
               </div>
-              <div className="md:w-1/2 space-y-12 text-gray-700 dark:text-gray-300 transition duration-500">
+              <div className="md:w-1/2 space-y-4 lg:space-y-8 text-gray-700 dark:text-gray-300 transition duration-500">
                 <h1
                   className="h-12 text-transparent bg-clip-text bg-gradient-to-br from-blue-600 from-20% via-indigo-400 via-30% to-teal-600 font-semibold text-2xl sm:text-3xl md:text-4xl">
                   {data.name}
