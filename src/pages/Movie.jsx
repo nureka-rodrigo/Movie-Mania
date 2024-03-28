@@ -28,12 +28,12 @@ const Movie = () => {
 
   return (
     <>
-      {isLoading ? (
-        <div className="flex flex-col justify-center items-center min-h-screen">
-          <Navbar/>
-          <section className="pt-32 pb-8 mx-auto">
+      <div className="flex flex-col justify-center items-center min-h-screen">
+        <Navbar/>
+        {isLoading ? (
+          <section className="pt-20 mx-auto">
             <div
-              className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-10 flex flex-col md:flex-row gap-32 py-10 rounded-2xl">
+              className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-10 flex flex-col md:flex-row gap-8 md:gap-20 lg:gap-32 py-10 rounded-2xl">
               <div className="flex md:flex-1">
                 <div
                   className="flex items-center justify-center bg-gray-300 dark:bg-gray-700 flex-shrink-0 relative rounded-xl overflow-hidden w-[275px] h-[400px] md:w-[300px] md:h-[600px] lg:w-[475px] lg:h-[700px] animate-pulse">
@@ -44,7 +44,7 @@ const Movie = () => {
                   </svg>
                 </div>
               </div>
-              <div className="md:w-1/2 text-gray-700 dark:text-gray-300">
+              <div className="md:w-1/2 text-gray-700 dark:text-gray-300 animate-pulse">
                 <div className="h-4 bg-gray-200 rounded-full dark:bg-gray-700 my-6 mb-16"></div>
 
                 <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 sm:w-52 md:w-72 lg:w-96 my-6"></div>
@@ -62,12 +62,8 @@ const Movie = () => {
               </div>
             </div>
           </section>
-          <Footer className="mt-auto"/>
-        </div>
-      ) : (
-        <div className="flex flex-col justify-center items-center min-h-screen">
-          <Navbar/>
-          <section className="pt-32 pb-8 mx-auto">
+        ) : (
+          <section className="pt-20 mx-auto">
             <div
               className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-10 flex flex-col md:flex-row gap-8 md:gap-16 py-10 rounded-2xl">
               <div className="flex md:flex-1">
@@ -122,9 +118,9 @@ const Movie = () => {
               </div>
             </div>
           </section>
-          <Footer className="mt-auto"/>
-        </div>
-      )}
+        )}
+        <Footer className="mt-auto"/>
+      </div>
     </>
   )
 }
