@@ -22,11 +22,11 @@ const Navbar = () => {
     if (searchInput) {
       const fetchMovies = fetch(`https://api.themoviedb.org/3/search/movie?query=${searchInput}&include_adult=false&language=en-US&page=1`, options)
         .then(response => response.json())
-        .then(data => data.results);
+        .then(data => data.results.map(movie => ({...movie, media_type: 'movie'})));
 
       const fetchTVShows = fetch(`https://api.themoviedb.org/3/search/tv?query=${searchInput}&include_adult=false&language=en-US&page=1`, options)
         .then(response => response.json())
-        .then(data => data.results);
+        .then(data => data.results.map(tvShow => ({...tvShow, media_type: 'tv_show'})));
 
       Promise.all([fetchMovies, fetchTVShows])
         .then(([movies, tvShows]) => {
@@ -123,7 +123,7 @@ const Navbar = () => {
                           </div>
                         )}
                         <div>
-                          <div>{result.title || result.name} ({result.release_date ? result.release_date.split('-')[0] : result.first_air_date ? result.first_air_date.split('-')[0] : ''})</div>
+                          <div>{result.title || result.name ? ((result.title || result.name).length > 20 ? (result.title || result.name).substring(0, 20) + '...' : (result.title || result.name)) : ''}</div>
                           <div
                             className="text-sm text-gray-500">{result.media_type === 'movie' ? 'Movie' : 'TV Show'}</div>
                         </div>
