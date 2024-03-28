@@ -16,7 +16,7 @@ const Index = () => {
                 <h1
                   className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl pt-16 lg:pt-0 transition duration-500">Discover
                   the <br/> latest <span
-                    className="text-transparent bg-clip-text bg-gradient-to-br from-blue-600 from-20% via-indigo-400 via-30% to-teal-600">Movies</span>
+                    className="text-transparent bg-clip-text bg-gradient-to-br from-blue-600 from-20% via-indigo-400 via-30% to-teal-600">Blockbusters</span>
                 </h1>
 
                 <p className="mt-3 text-gray-600 dark:text-gray-400 transition duration-500">Explore a world of
@@ -31,11 +31,8 @@ const Index = () => {
             </div>
           </div>
         </div>
-
         <HomeMovies/>
-
         <HomeTvShows/>
-
         <Footer className="mt-auto"/>
       </div>
     </>

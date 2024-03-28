@@ -66,7 +66,8 @@ const HomeTvShows = () => {
         <div className="max-w-[95rem] px-6 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
           <div className="grid lg:grid-cols-2 gap-6">
             {data.slice(0, 4).map((movie, index) => (
-              <div key={index} className="group sm:flex rounded-xl">
+              <div key={index}
+                   className="group sm:flex rounded-xl hover:bg-gray-100 dark:hover:bg-gray-950 transition duration-300">
                 <div
                   className="flex-shrink-0 relative rounded-xl overflow-hidden w-full h-[200px] sm:w-[250px] sm:h-[350px]">
                   <img className="size-full absolute top-0 start-0 object-cover"
