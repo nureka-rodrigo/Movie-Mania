@@ -70,7 +70,7 @@ const TvShow = () => {
             <div
               className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-10 flex flex-col md:flex-row gap-8 md:gap-16 py-10 rounded-2xl">
               <div className="flex md:flex-1">
-                <img src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} alt="working on housing" width={1300}
+                <img src={`https://image.tmdb.org/t/p/original${data.poster_path}`} alt={data.name}
                      className="w-full md:h-full object-cover rounded-lg"/>
               </div>
               <div className="md:w-1/2 space-y-4 lg:space-y-8 text-gray-700 dark:text-gray-300 transition duration-500">
