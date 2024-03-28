@@ -1,15 +1,16 @@
 import axios from "axios";
 import {options} from "../data/RequestOptions.jsx";
 import {useEffect, useState} from "react";
+import PropTypes from "prop-types";
 
-const HomeMovies = () => {
+const MovieCards = ({ size, type, page }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1`, options)
+      .get(`https://api.themoviedb.org/3/movie/${type}?language=en-US&page=${page}`, options) // Use the page prop in the request
       .then((response) => {
         if (response.status === 200) {
           setData(response.data.results)
@@ -20,18 +21,14 @@ const HomeMovies = () => {
         console.error(error)
         setIsLoading(false)
       })
-  }, []);
+  }, [type, page]);
 
   return (
     <>
-      <div className="max-w-lg mx-auto text-center">
-        <h2
-          className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-br from-blue-600 from-20% via-indigo-400 via-30% to-teal-600 md:text-4xl xl:text-5xl">Movies</h2>
-      </div>
       {isLoading ? (
         <div className="max-w-[95rem] px-6 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
           <div className="grid lg:grid-cols-2 gap-6">
-            {Array.from({length: 4}).map((_, index) => (
+            {Array.from({length: size}).map((_, index) => (
               <div key={index} className="group sm:flex rounded-xl" role="status">
                 <div
                   className="flex items-center justify-center bg-gray-300 dark:bg-gray-700 flex-shrink-0 relative rounded-xl overflow-hidden w-[300px] h-[400px] animate-pulse">
@@ -64,7 +61,7 @@ const HomeMovies = () => {
       ) : (
         <div className="max-w-[95rem] px-6 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
           <div className="grid lg:grid-cols-2 gap-6">
-            {data.slice(0, 4).map((movie, index) => (
+            {data.slice(0, size).map((movie, index) => (
               <div key={index} className="group sm:flex rounded-xl hover:bg-gray-100 dark:hover:bg-gray-950 transition duration-300">
                 <div
                   className="flex-shrink-0 relative rounded-xl overflow-hidden w-full h-[200px] sm:w-[250px] sm:h-[350px]">
@@ -98,4 +95,10 @@ const HomeMovies = () => {
   )
 }
 
-export default HomeMovies;
+MovieCards.propTypes = {
+  size: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
+  page: PropTypes.number.isRequired,
+};
+
+export default MovieCards;

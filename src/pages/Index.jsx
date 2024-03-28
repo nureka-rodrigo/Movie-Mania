@@ -1,8 +1,8 @@
 import Navbar from "../components/NavBar.jsx";
 import Footer from "../components/Footer.jsx";
 import Illustration1 from "../assets/home-1.svg";
-import HomeMovies from "../components/HomeMovies.jsx";
-import HomeTvShows from "../components/HomeTvShows.jsx";
+import MovieCards from "../components/MovieCards.jsx";
+import TvShowCards from "../components/TvShowCards.jsx";
 
 const Index = () => {
   return (
@@ -31,8 +31,19 @@ const Index = () => {
             </div>
           </div>
         </div>
-        <HomeMovies/>
-        <HomeTvShows/>
+
+        <div className="max-w-lg mx-auto text-center">
+          <h2
+            className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-br from-blue-600 from-20% via-indigo-400 via-30% to-teal-600 md:text-4xl xl:text-5xl">Movies</h2>
+        </div>
+        <MovieCards size={4} type={"now_playing"} page={1}/>
+
+        <div className="max-w-lg mx-auto text-center">
+          <h2
+            className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-br from-blue-600 from-20% via-indigo-400 via-30% to-teal-600 md:text-4xl xl:text-5xl">TV
+            Shows</h2>
+        </div>
+        <TvShowCards size={4} type={"on_the_air"}/>
         <Footer className="mt-auto"/>
       </div>
     </>
