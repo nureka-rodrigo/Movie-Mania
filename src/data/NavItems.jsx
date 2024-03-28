@@ -7,7 +7,7 @@ export const NavItems = [
   {
     id: 2,
     text: 'Movies',
-    link: 'movie',
+    link: 'movies',
   },
   {
     id: 3,
