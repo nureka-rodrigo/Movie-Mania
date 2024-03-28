@@ -31,7 +31,7 @@ const Navbar = () => {
             `}
           >
             <ul
-              className="flex flex-col justify-center lg:flex-row gap-3 lg:items-center text-gray-700 dark:text-gray-300 lg:w-full lg:pl-36">
+              className="flex flex-col justify-center lg:flex-row gap-8 lg:items-center text-gray-700 dark:text-gray-300 lg:w-full lg:pl-36">
               {NavItems.map((navItem) => (
                 <li key={navItem.id}>
                   <a href={navItem.link}
@@ -45,7 +45,7 @@ const Navbar = () => {
                 </li>
               ))}
             </ul>
-            <div className="relative mt-5 lg:mt-0 lg:mr-5">
+            <div className="relative mt-8 lg:mt-0 lg:mr-5">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                     <svg className="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none">
                         <path
