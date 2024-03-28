@@ -2,6 +2,7 @@ import './App.css'
 import Index from "./pages/Index.jsx";
 import {Route, Routes} from "react-router-dom";
 import Landing from "./components/Landing.jsx";
+import Error404 from "./pages/Error404.jsx";
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path={"/"} element={<Landing/>}/>
           <Route path={"/home"} element={<Index/>}/>
+          <Route path={"*"} element={<Error404/>}/>
         </Routes>
       </div>
     </>
