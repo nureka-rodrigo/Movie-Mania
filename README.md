@@ -1,6 +1,6 @@
 # Movie-Mania
 
-Movie-Mania is a web application built with React that allows users to search for their favorite movies and TV shows.
+Movie-Mania is a dynamic web application built with React and bootstrapped with Vite. It provides a platform for movie and TV show enthusiasts to explore and discover new content. The application fetches data from an external API and presents it in a user-friendly format, offering detailed information about each movie or TV show. With features like dynamic listing, detailed information, pagination, search functionality, dark mode support, and responsive design, Movie-Mania aims to enhance the user's browsing experience.
 
 ## Features
 
@@ -13,12 +13,15 @@ Movie-Mania is a web application built with React that allows users to search fo
 
 ## Installation
 
-To set up and run this project locally, you'll need to have Node.js and npm installed. Follow these steps:
+This project was bootstrapped with [Vite](https://vitejs.dev/).
+To set up and run this project locally,
+you'll need to have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
+Follow these steps:
 
 1. Clone the repository: `git clone https://github.com/nureka-rodrigo/movie-mania.git`
 2. Navigate into the project directory: `cd movie-mania`
 3. Install the dependencies: `npm install`
-4. Start the application: `npm start`
+4. Start the application: `npm run dev`
 
 The application will start running on `http://localhost:3000`.
 
