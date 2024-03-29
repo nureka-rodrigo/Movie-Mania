@@ -11,6 +11,15 @@ Movie-Mania is a dynamic web application built with React and bootstrapped with 
 - **Dark Mode Support**: The application has a dark mode toggle functionality for a comfortable viewing experience in different lighting conditions.
 - **Responsive Design**: Works well on a variety of devices and window or screen sizes.
 
+## Environment Variables
+
+The project uses the following environment variables, which are stored in a `.env` file:
+
+- `VITE_API_KEY`: The API key for The Movie Database (TMDb) API.
+- `VITE_SERVICE_ID`: The service ID for the EmailJS service.
+- `VITE_TEMPLATE_ID`: The template ID for the EmailJS service.
+- `VITE_PUBLIC_KEY`: The public key for the EmailJS service.
+
 ## Installation
 
 This project was bootstrapped with [Vite](https://vitejs.dev/).
