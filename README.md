@@ -27,14 +27,7 @@ The application will start running on `http://localhost:3000`.
 
 ## Contributing
 
-Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
-
-1. Fork the repository: Click on the 'Fork' button at the top right corner of this page and select your GitHub username. This will create a copy of this repository in your GitHub account.
-2. Clone the forked repository: Navigate to your GitHub account, open the forked repository, click on the 'Code' button and then click 'copy to clipboard'. Open a terminal and run `git clone "url you just copied"`.
-3. Create a new branch: Navigate to the directory where you cloned the repository and run `git checkout -b your-new-branch-name`.
-4. Make your changes: Make the changes you want to contribute. Be sure to thoroughly test your changes.
-5. Commit and push your changes: Run `git add .`, `git commit -m "commit message"` and then `git push origin your-new-branch-name`.
-6. Open a Pull Request: Navigate to the original repository on GitHub, click on the 'Pull Request' button, then click on 'compare across forks', select 'your-new-branch-name' and finally click on 'Create Pull Request'.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
 
